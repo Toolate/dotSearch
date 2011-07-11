@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BubbleSearch" Class="BubbleBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=BubbleSearch;Integrated Security=True" SettingsObjectName="BubbleSearchDataContext.Properties.Settings" SettingsPropertyName="BubbleSearchConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="id_category" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name_category" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Site" Member="Sites" ThisKey="id_category" OtherKey="ID_CATEGORY" Type="Site" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Words" Member="Words">
+    <Type Name="Word">
+      <Column Name="id_word" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="txt_word" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Word_Occurrence" Member="Occurrences" ThisKey="id_word" OtherKey="id_word" Type="Occurrence" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Occurrence" Member="Occurrences">
+    <Type Name="Occurrence">
+      <Column Name="id_occur" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_page" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_word" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="nb_occur" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Word_Occurrence" Member="Word" ThisKey="id_word" OtherKey="id_word" Type="Word" IsForeignKey="true" />
+      <Association Name="Page_Occurrence" Member="Page" ThisKey="id_page" OtherKey="id_page" Type="Page" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Page" Member="Pages">
+    <Type Name="Page">
+      <Column Name="id_page" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_site_parent" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="url_page" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="title_page" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="description_page" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Page_Occurrence" Member="Occurrences" ThisKey="id_page" OtherKey="id_page" Type="Occurrence" />
+      <Association Name="Page_Resource" Member="Resources" ThisKey="id_page" OtherKey="id_page" Type="Resource" />
+      <Association Name="Site_Page" Member="Site" ThisKey="id_site_parent" OtherKey="ID_SITE" Type="Site" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[References]" Member="References">
+    <Type Name="Reference">
+      <Column Name="id_ref" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_site_source" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="id_site_destination" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Site_Reference" Member="Site" ThisKey="id_site_destination" OtherKey="ID_SITE" Type="Site" IsForeignKey="true" />
+      <Association Name="Site_Reference1" Member="Site1" ThisKey="id_site_source" OtherKey="ID_SITE" Type="Site" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Resources" Member="Resources">
+    <Type Name="Resource">
+      <Column Name="id_resource" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_page" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="type_resx" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="name_resx" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="url_resx" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Page_Resource" Member="Page" ThisKey="id_page" OtherKey="id_page" Type="Page" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Site" Member="Sites">
+    <Type Name="Site">
+      <Column Name="ID_SITE" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="URL_SITE" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CATEGORY" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TITLE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Site_Page" Member="Pages" ThisKey="ID_SITE" OtherKey="id_site_parent" Type="Page" />
+      <Association Name="Site_Reference" Member="References" ThisKey="ID_SITE" OtherKey="id_site_destination" Type="Reference" />
+      <Association Name="Site_Reference1" Member="References1" ThisKey="ID_SITE" OtherKey="id_site_source" Type="Reference" />
+      <Association Name="Category_Site" Member="Category" ThisKey="ID_CATEGORY" OtherKey="id_category" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.AddCategory" Method="AddCategory">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(75)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateWords" Method="UpdateWords">
+    <Parameter Name="id_w" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="txt_w" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddOccurrence" Method="AddOccurrence">
+    <Parameter Name="id_o" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_p" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_w" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="nb_occur" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddPage" Method="AddPage">
+    <Parameter Name="id_p" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_site_p" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="url_p" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="title_p" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="desc_p" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddReferences" Method="AddReferences">
+    <Parameter Name="id_r" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_site_s" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_site_d" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddResources" Method="AddResources">
+    <Parameter Name="id_r" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="id_p" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="type_r" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="name_r" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddSite" Method="AddSite">
+    <Parameter Name="id_s" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="url_site" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="id_cat" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="desc" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="title" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="iq" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddWords" Method="AddWords">
+    <Parameter Name="id_w" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="txt_w" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveCategory" Method="RemoveCategory">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveOccurrence" Method="RemoveOccurrence">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemovePages" Method="RemovePages">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveReferences" Method="RemoveReferences">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveResources" Method="RemoveResources">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveSite" Method="RemoveSite">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveWords" Method="RemoveWords">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateCategory" Method="UpdateCategory">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(75)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateOccurence" Method="UpdateOccurence">
+    <Parameter Name="id_occur" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="nb_occur" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdatePage" Method="UpdatePage">
+    <Parameter Name="id_page" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="url_page" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="title_page" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="description_page" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateResources" Method="UpdateResources">
+    <Parameter Name="id_res" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="type_r" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="name_r" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateSite" Method="UpdateSite">
+    <Parameter Name="id_s" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="url_s" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="desc_s" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="title_s" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="qi_s" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
