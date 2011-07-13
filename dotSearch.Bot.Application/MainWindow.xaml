@@ -1,0 +1,21 @@
+﻿<Window x:Class="dotSearch.BotApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title=".Search project: Configuration du crawler" Height="350" Width="525"  Loaded="Window_Loaded" Background="{x:Null}" Icon="/dotSearch.BotApplication;component/icon.png" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+    <Grid>
+        <TabControl Height="287" HorizontalAlignment="Left" Margin="12,12,0,0" Name="tabControl1" VerticalAlignment="Top" Width="479">
+            <TabItem Header="Initialisation" Name="Init_tabItem">
+                <Grid>
+                    <Label Content="Start Url:" Height="28" HorizontalAlignment="Left" Margin="30,30,0,0" Name="startUrl_label" VerticalAlignment="Top" Width="59" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="102,30,0,0" Name="Url_textBox" VerticalAlignment="Top" Width="340" />
+                    <Slider Height="23" HorizontalAlignment="Right" Margin="0,131,27,0" Name="Depth_slider" VerticalAlignment="Top" Width="296.667" TickFrequency="1" TickPlacement="BottomRight" UseLayoutRounding="False" Value="25" Maximum="100" ClipToBounds="False" />
+                    <Label Content="Depth:" Height="29" HorizontalAlignment="Left" Margin="40,125,0,0" Name="label1" VerticalAlignment="Top" Width="49" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="102,131,0,0" Name="Depth_textBox" VerticalAlignment="Top" Width="37" Text="25" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Configuration" Name="Config_tabItem2">
+                <Grid />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

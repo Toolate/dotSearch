@@ -11,8 +11,11 @@ using System.IO;
 using System.Web;
 
 
-namespace BubbleSearch.Bot
+namespace dotSearch.Bot
 {
+    /// <summary>
+    /// Objet Lien (url et booleen de traitement)
+    /// </summary>
     public class Link
     {
         public string Url { get; set; }
@@ -29,7 +32,8 @@ namespace BubbleSearch.Bot
     /// </summary>
     public class BotPage
     {
-        public int Depth { get; set; }
+        public int Depth {
+            get; set; }
         public List<Page> Pages { get; set; }
         public List<Link> BotLinks { get; set; }
         public List<string> Errors { get; set; }
@@ -77,6 +81,11 @@ namespace BubbleSearch.Bot
 
         }
 
+        /// <summary>
+        /// Methode de log des erreurs
+        /// </summary>
+        /// <param name="id">id de l'erreur</param>
+        /// <param name="erreur">contenu de l'erreur</param>
         public void ErrorLog(string id, string erreur)
         {
             string myPath = @"./Logs";

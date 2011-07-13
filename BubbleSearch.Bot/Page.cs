@@ -6,7 +6,7 @@ using HtmlAgilityPack; //Html parser codeplex libre d'utilisation
 using Lucene.Net.Analysis;
 using System.Text.RegularExpressions;
 
-namespace BubbleSearch.Bot
+namespace dotSearch.Bot
 {
 
     /// <summary>

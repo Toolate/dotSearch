@@ -44,49 +44,49 @@
         <elementListCompartment Id="ac300e00-f335-4704-b884-00cbf9425809" absoluteBounds="3.515, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 1.34699625651042); (10 : 1.34699625651042); (10 : 4.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 1.34699625651042); (10 : 1.34699625651042); (10 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Word/Word_Occurrence" />
       <nodes>
         <classShapeMoniker Id="9bd588ab-d910-4e22-9552-b374921900a7" />
         <classShapeMoniker Id="44a5809d-ba10-49e5-97d8-42ccdff07316" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 5.78929768880208); (9 : 5.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 5.78929768880208); (9 : 5.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Page/Page_Occurrence" />
       <nodes>
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
         <classShapeMoniker Id="44a5809d-ba10-49e5-97d8-42ccdff07316" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 7.27089680989583); (7.25 : 8.63544840494792); (9 : 8.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.25 : 7.27089680989583); (7.25 : 8.63544840494792); (9 : 8.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Page/Page_Resource" />
       <nodes>
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
         <classShapeMoniker Id="891b7607-08c7-48d9-b5cd-6ee3995f7913" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.85659912109375); (6.25 : 5.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.85659912109375); (6.25 : 5.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Page" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.50564697265625); (6.25 : 4.50564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.50564697265625); (6.25 : 4.50564697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Reference" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="889a8943-1b12-4a01-9172-29aa1b8d3b6d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.31532348632813); (6.25 : 4.31532348632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.31532348632813); (6.25 : 4.31532348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Reference1" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="889a8943-1b12-4a01-9172-29aa1b8d3b6d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.22199625651042); (3.5 : 5.22199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.22199625651042); (3.5 : 5.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BubbleBaseDataContext/Category/Category_Site" />
       <nodes>
         <classShapeMoniker Id="9c35d23d-b894-4905-b137-e607dc617cec" />

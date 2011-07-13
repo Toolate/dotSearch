@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BubbleSearch" Class="BubbleBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=BubbleSearch;Integrated Security=True" SettingsObjectName="BubbleSearchDataContext.Properties.Settings" SettingsPropertyName="BubbleSearchConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=BubbleSearch;Integrated Security=True" SettingsObjectName="dotSearchDataContext.Properties.Settings" SettingsPropertyName="BubbleSearchConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Category" Member="Categories">
     <Type Name="Category">
       <Column Name="id_category" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

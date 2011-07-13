@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Linq;
 using System.Text;
-using BubbleSearch.Bot;
+using dotSearch.Bot;
 using System.Diagnostics;
 
 namespace mainConsole
