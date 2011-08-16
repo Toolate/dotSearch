@@ -15,7 +15,7 @@ namespace mainConsole
             if (args.Count() < 2)
             {
                 Console.WriteLine("Erreur: Argument 1: url, Argument 2: profondeur de parcours");
-                
+                //blabla
             }
             
             BotPage botPage = new BotPage(args[0].Normalize(), System.Int32.Parse(args[1]));                     
