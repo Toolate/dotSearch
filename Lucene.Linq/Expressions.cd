@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lucene.Linq.Expressions.ExpressionVisitor" Collapsed="true">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEAABACAAAYwBAQAAAAAISDAAAAEAgACAFAAAAgEQAA=</HashCode>
+      <FileName>Expressions\ExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.FieldDeclaration" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAABAEAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\FieldDeclaration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.IndexExpression" Collapsed="true">
+    <Position X="19.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\IndexExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.IndexExpressionExtensions" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\IndexExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.LuceneExpressionVisitor" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACEQAAQAAAAAAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Expressions\LuceneExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.ProjectedFields" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Expressions\ProjectedFields.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.ProjectionExpression" Collapsed="true">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\ProjectionExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.Query&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIIAAAAgAEBhAEAAAAAAQBAAAAAAAUAAAAAAAAgAA=</HashCode>
+      <FileName>Expressions\Query.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.ParsingQueryTranslator" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAExAAAAAAAAAQQBAAAAAQAAABAEAAAAwAg=</HashCode>
+      <FileName>Expressions\ParsingQueryTranslator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.Replacer" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAEAACA=</HashCode>
+      <FileName>Expressions\Replacer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.SelectExpression" Collapsed="true">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAgIAAAIAAAAAAAAAAQAAAAEAAAAAAAAAACAAgAg=</HashCode>
+      <FileName>Expressions\SelectExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.FieldExpression" Collapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAEAAAABAAAAQAAAAEIAAAACAAAAAAAAA=</HashCode>
+      <FileName>Expressions\FieldExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.QueryBinder" Collapsed="true">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCQAkAAEAAqxBIAAAIAAASAACAAgEBAAAAAgAAgAIAA=</HashCode>
+      <FileName>Expressions\QueryBinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.TypeSystem" Collapsed="true">
+    <Position X="18" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAA=</HashCode>
+      <FileName>Expressions\TypeSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.Evaluator" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\Evaluator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.ProjectionBuilder" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAIAAEAAACAAAAAAIACAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expressions\ProjectionBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lucene.Linq.Expressions.QueryProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAQAAAAAAAABAAAAIAIAAAAEAAgAAAE=</HashCode>
+      <FileName>Expressions\QueryProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="Lucene.Linq.Expressions.LuceneExpressionType" Collapsed="true">
+    <Position X="14.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAQgAA=</HashCode>
+      <FileName>Expressions\LuceneExpressionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lucene.Linq.Index&lt;TEntity&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="1.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>UAIABTAAACGEhRAYAgACAASAACEAAAAQgAAiAIAAAIA=</HashCode>
+      <FileName>Index`1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.252" Collapsed="true" />
+  </Class>
+  <Class Name="Lucene.Linq.IndexSet" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIAABAAAAAAAQBgCIAABAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>IndexSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lucene.Linq.Indexer" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAMBAAAACoAEAACAAAEAAQAAAIEAAQAIAAAAAAAAAY=</HashCode>
+      <FileName>Indexer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Lucene.Linq.CompositeIndexer" Collapsed="true">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACIAEAQAAAAEAAAAAAIAAAAAIAAAAAAAAAY=</HashCode>
+      <FileName>Indexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.SequentialIndexer" Collapsed="true">
+    <Position X="8.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Indexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.ParallelIndexer" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <InheritanceLine Type="Lucene.Linq.Indexer" ManuallyRouted="true">
+      <Path>
+        <Point X="8.25" Y="5.062" />
+        <Point X="8.25" Y="5.223" />
+        <Point X="6.75" Y="5.223" />
+        <Point X="6.75" Y="6.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAACIAEAQAAAAEAAAAAAIAAAAAIAAAAAAAAAY=</HashCode>
+      <FileName>Indexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Extensions" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Lucene.Linq.Extensions.ActionDisposable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Extensions.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AACIAgAAAAAAAIIAAAAACQAAQAAAAAAAABAAAAAhgEA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Lucene.Linq.IIndex" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIndex.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Lucene.Linq.IIndexable" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIndexable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Lucene.Linq.IIndex&lt;TIndex&gt;" Collapsed="true">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIndex`1.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Lucene.Linq.IIndexSet" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAAAAAAABACAAABAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>IIndexSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Lucene.Linq.IndexContextMode">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Index`1.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

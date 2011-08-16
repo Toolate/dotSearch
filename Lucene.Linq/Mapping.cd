@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lucene.Linq.Mapping.AttributeGetter" Collapsed="true">
+    <Position X="3" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\AttributeGetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.ProjectionReader&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\ProjectionReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.DocumentAttribute">
+    <Position X="5.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Mapping\DocumentAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.DocumentProjection" Collapsed="true">
+    <Position X="8.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\DocumentProjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.FieldAttribute" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAAAAgAAAACgAAQAAAAAAAAAAAEAAQAAAAA=</HashCode>
+      <FileName>Mapping\FieldAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.FieldDetails" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAgAA=</HashCode>
+      <FileName>Mapping\FieldDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.FieldProjection" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Mapping\FieldProjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.FieldProjector" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAEAAAAAAABBQQAAEAACAAAAAAABAEACAAAAAAIAA=</HashCode>
+      <FileName>Mapping\FieldProjector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lucene.Linq.Mapping.ObjectReader&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\ObjectReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="Lucene.Linq.Mapping.FieldIndex" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAACAAAIAAA=</HashCode>
+      <FileName>Mapping\FieldIndex.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Lucene.Linq.Mapping.FieldStore" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\FieldStore.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

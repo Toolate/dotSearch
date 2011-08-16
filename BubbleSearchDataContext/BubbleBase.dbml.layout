@@ -1,93 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 9.75" name="BubbleBase">
-  <DataContextMoniker Name="/BubbleBaseDataContext" />
+  <DataContextMoniker Name="/dotBaseDataContext" />
   <nestedChildShapes>
     <classShape Id="9c35d23d-b894-4905-b137-e607dc617cec" absoluteBounds="0.75, 4.625, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Category" />
+      <DataClassMoniker Name="/dotBaseDataContext/Category" />
       <nestedChildShapes>
         <elementListCompartment Id="99f5ccec-e34b-4854-878c-a18cc9f33ab4" absoluteBounds="0.765, 5.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="9bd588ab-d910-4e22-9552-b374921900a7" absoluteBounds="6.25, 0.75, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Word" />
+      <DataClassMoniker Name="/dotBaseDataContext/Word" />
       <nestedChildShapes>
         <elementListCompartment Id="b89dd7fa-f747-4fda-9774-5c78f96def2b" absoluteBounds="6.265, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="44a5809d-ba10-49e5-97d8-42ccdff07316" absoluteBounds="9, 4.5, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Occurrence" />
+      <DataClassMoniker Name="/dotBaseDataContext/Occurrence" />
       <nestedChildShapes>
         <elementListCompartment Id="07fd27c9-1add-4bd1-8149-382f43cf4330" absoluteBounds="9.015, 4.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="99218a24-3e33-4220-891f-b28d665acfda" absoluteBounds="6.25, 5.5, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Page" />
+      <DataClassMoniker Name="/dotBaseDataContext/Page" />
       <nestedChildShapes>
         <elementListCompartment Id="404a9fbb-95ca-40ff-9870-c08f6585d582" absoluteBounds="6.265, 5.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="889a8943-1b12-4a01-9172-29aa1b8d3b6d" absoluteBounds="6.25, 3.375, 2, 1.3862939453125">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Reference" />
+      <DataClassMoniker Name="/dotBaseDataContext/Reference" />
       <nestedChildShapes>
         <elementListCompartment Id="d5f8cbc2-a35a-4260-b886-7232a06d82c0" absoluteBounds="6.265, 3.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="891b7607-08c7-48d9-b5cd-6ee3995f7913" absoluteBounds="9, 7.75, 2, 1.7708968098958344">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Resource" />
+      <DataClassMoniker Name="/dotBaseDataContext/Resource" />
       <nestedChildShapes>
         <elementListCompartment Id="02d1bb68-fb58-4b81-bde7-d23a3072d2aa" absoluteBounds="9.015, 8.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" absoluteBounds="3.5, 4.25, 2, 1.9631982421875005">
-      <DataClassMoniker Name="/BubbleBaseDataContext/Site" />
+      <DataClassMoniker Name="/dotBaseDataContext/Site" />
       <nestedChildShapes>
         <elementListCompartment Id="ac300e00-f335-4704-b884-00cbf9425809" absoluteBounds="3.515, 4.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(8.25 : 1.34699625651042); (10 : 1.34699625651042); (10 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Word/Word_Occurrence" />
+      <AssociationMoniker Name="/dotBaseDataContext/Word/Word_Occurrence" />
       <nodes>
         <classShapeMoniker Id="9bd588ab-d910-4e22-9552-b374921900a7" />
         <classShapeMoniker Id="44a5809d-ba10-49e5-97d8-42ccdff07316" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.25 : 5.78929768880208); (9 : 5.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Page/Page_Occurrence" />
+      <AssociationMoniker Name="/dotBaseDataContext/Page/Page_Occurrence" />
       <nodes>
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
         <classShapeMoniker Id="44a5809d-ba10-49e5-97d8-42ccdff07316" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(7.25 : 7.27089680989583); (7.25 : 8.63544840494792); (9 : 8.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Page/Page_Resource" />
+      <AssociationMoniker Name="/dotBaseDataContext/Page/Page_Resource" />
       <nodes>
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
         <classShapeMoniker Id="891b7607-08c7-48d9-b5cd-6ee3995f7913" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 5.85659912109375); (6.25 : 5.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Page" />
+      <AssociationMoniker Name="/dotBaseDataContext/Site/Site_Page" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="99218a24-3e33-4220-891f-b28d665acfda" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 4.50564697265625); (6.25 : 4.50564697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Reference" />
+      <AssociationMoniker Name="/dotBaseDataContext/Site/Site_Reference" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="889a8943-1b12-4a01-9172-29aa1b8d3b6d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 4.31532348632813); (6.25 : 4.31532348632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Site/Site_Reference1" />
+      <AssociationMoniker Name="/dotBaseDataContext/Site/Site_Reference1" />
       <nodes>
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />
         <classShapeMoniker Id="889a8943-1b12-4a01-9172-29aa1b8d3b6d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 5.22199625651042); (3.5 : 5.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BubbleBaseDataContext/Category/Category_Site" />
+      <AssociationMoniker Name="/dotBaseDataContext/Category/Category_Site" />
       <nodes>
         <classShapeMoniker Id="9c35d23d-b894-4905-b137-e607dc617cec" />
         <classShapeMoniker Id="2813d4fe-74b0-4fca-ad68-0c2ee5a1fb0d" />

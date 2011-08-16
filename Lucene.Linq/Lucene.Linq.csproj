@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{178E3DDE-5099-4646-8C62-8065F040DE18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lucene.Linq</RootNamespace>
+    <AssemblyName>Lucene.Linq</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\Desktop\XMLDoc\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\Lucene.Linq.XML</DocumentationFile>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lucene.Net, Version=2.0.0.4, Culture=neutral, PublicKeyToken=46727aa9ba990294, processorArchitecture=MSIL">
+      <HintPath>..\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionDisposable.cs" />
+    <Compile Include="DatabaseIndexSet.cs" />
+    <Compile Include="Expressions\AnalyzerTypeCache.cs" />
+    <Compile Include="Expressions\ElementAtExpression.cs" />
+    <Compile Include="Expressions\IProjectionBuilder.cs" />
+    <Compile Include="Expressions\TypeCache.cs" />
+    <Compile Include="Expressions\CountExpression.cs" />
+    <Compile Include="Expressions\Defaults.cs" />
+    <Compile Include="Expressions\IQueryTranslator.cs" />
+    <Compile Include="Expressions\ObjectQueryTranslator.cs" />
+    <Compile Include="Expressions\Replacer.cs" />
+    <Compile Include="Expressions\SelectExpression.cs" />
+    <Compile Include="Expressions\SkipAndTakeExpression.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Expressions\FieldDeclaration.cs" />
+    <Compile Include="Expressions\FieldExpression.cs" />
+    <Compile Include="Expressions\IndexExpression.cs" />
+    <Compile Include="Expressions\LuceneExpressionType.cs" />
+    <Compile Include="Expressions\LuceneExpressionVisitor.cs" />
+    <Compile Include="Expressions\ProjectedFields.cs" />
+    <Compile Include="Expressions\ProjectionBuilder.cs" />
+    <Compile Include="Expressions\ProjectionExpression.cs" />
+    <Compile Include="Expressions\QueryBinder.cs" />
+    <Compile Include="Expressions\ParsingQueryTranslator.cs" />
+    <Compile Include="IHit.cs" />
+    <Compile Include="IIndexable.cs" />
+    <Compile Include="IIndex.cs" />
+    <Compile Include="IIndexSet.cs" />
+    <Compile Include="IIndex`1.cs" />
+    <Compile Include="IndexContext.cs" />
+    <Compile Include="Index`1.cs" />
+    <Compile Include="IndexSet.cs" />
+    <Compile Include="Indexer.cs" />
+    <Compile Include="Mapping\AttributeReader.cs" />
+    <Compile Include="Mapping\DocumentDetails.cs" />
+    <Compile Include="Mapping\DocumentMetadataAttribute.cs" />
+    <Compile Include="Mapping\DocumentProjection.cs" />
+    <Compile Include="Mapping\FieldAttribute.cs" />
+    <Compile Include="Mapping\FieldDetails.cs" />
+    <Compile Include="Mapping\FieldIndex.cs" />
+    <Compile Include="Mapping\DocumentAttribute.cs" />
+    <Compile Include="Mapping\FieldProjector.cs" />
+    <Compile Include="Mapping\FieldStore.cs" />
+    <Compile Include="Mapping\FieldProjection.cs" />
+    <Compile Include="Mapping\ObjectReader.cs" />
+    <Compile Include="Mapping\ProjectionReader.cs" />
+    <Compile Include="ObjectDumper.cs" />
+    <Compile Include="PagedList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Expressions\Evaluator.cs" />
+    <Compile Include="Expressions\ExpressionVisitor.cs" />
+    <Compile Include="Expressions\Query.cs" />
+    <Compile Include="Expressions\QueryProvider.cs" />
+    <Compile Include="Expressions\TypeSystem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Expressions.cd" />
+    <None Include="Index.cd" />
+    <None Include="Mapping.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

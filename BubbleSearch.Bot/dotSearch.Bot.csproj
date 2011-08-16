@@ -39,10 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\bin\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net">
-      <HintPath>..\bin\Lucene.Net.dll</HintPath>
+      <HintPath>..\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

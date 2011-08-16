@@ -7,27 +7,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mainConsole", "mainConsole\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotSearchDataContext", "BubbleSearchDataContext\dotSearchDataContext.csproj", "{09164536-42AD-4075-99B6-5EB27AA4EFDD}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BubbleSearch", "..\WebSites\BubbleSearch\", "{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/BubbleSearch"
-		Debug.AspNetCompiler.PhysicalPath = "..\WebSites\BubbleSearch\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\BubbleSearch\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/BubbleSearch"
-		Release.AspNetCompiler.PhysicalPath = "..\WebSites\BubbleSearch\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\BubbleSearch\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "7111"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotSearch.BotApplication", "dotSearch.Bot.Application\dotSearch.BotApplication.csproj", "{57A928FF-B640-4841-A801-CC639F99B924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotSearch.Site", "dotSearch.Site\dotSearch.Site.csproj", "{04682D46-0855-4960-A504-D78281BF4547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lucene.Linq", "Lucene.Linq\Lucene.Linq.csproj", "{178E3DDE-5099-4646-8C62-8065F040DE18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4223D3E-3C44-43F3-8A7A-3560EFE55D75}"
+	ProjectSection(SolutionItems) = preProject
+		Lucene.Net.dll = Lucene.Net.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotSearch.BotApplication", "dotSearch.Bot.Application\dotSearch.BotApplication.csproj", "{57A928FF-B640-4841-A801-CC639F99B924}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlAgilityPack", "HtmlAgilityPack", "{8319F3D8-CFC4-4FAB-8030-F841E749CB13}"
+	ProjectSection(SolutionItems) = preProject
+		HtmlAgilityPack.dll = HtmlAgilityPack.dll
+		HtmlAgilityPack.pdb = HtmlAgilityPack.pdb
+		HtmlAgilityPack.XML = HtmlAgilityPack.XML
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,16 +65,6 @@ Global
 		{09164536-42AD-4075-99B6-5EB27AA4EFDD}.Release|Mixed Platforms.Build.0 = Release|x86
 		{09164536-42AD-4075-99B6-5EB27AA4EFDD}.Release|x86.ActiveCfg = Release|x86
 		{09164536-42AD-4075-99B6-5EB27AA4EFDD}.Release|x86.Build.0 = Release|x86
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1BCD967A-FCD3-4D20-A6F2-05BA940D660D}.Release|x86.ActiveCfg = Debug|Any CPU
 		{57A928FF-B640-4841-A801-CC639F99B924}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{57A928FF-B640-4841-A801-CC639F99B924}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{57A928FF-B640-4841-A801-CC639F99B924}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -89,8 +75,31 @@ Global
 		{57A928FF-B640-4841-A801-CC639F99B924}.Release|Mixed Platforms.Build.0 = Release|x86
 		{57A928FF-B640-4841-A801-CC639F99B924}.Release|x86.ActiveCfg = Release|x86
 		{57A928FF-B640-4841-A801-CC639F99B924}.Release|x86.Build.0 = Release|x86
+		{04682D46-0855-4960-A504-D78281BF4547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{04682D46-0855-4960-A504-D78281BF4547}.Release|x86.ActiveCfg = Release|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{178E3DDE-5099-4646-8C62-8065F040DE18}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8319F3D8-CFC4-4FAB-8030-F841E749CB13} = {F4223D3E-3C44-43F3-8A7A-3560EFE55D75}
 	EndGlobalSection
 EndGlobal

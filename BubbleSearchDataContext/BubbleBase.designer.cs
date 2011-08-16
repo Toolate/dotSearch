@@ -23,7 +23,7 @@ namespace dotSearchDataContext
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BubbleSearch")]
-	public partial class BubbleBaseDataContext : System.Data.Linq.DataContext
+	public partial class dotBaseDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -53,31 +53,31 @@ namespace dotSearchDataContext
     partial void DeleteSite(Site instance);
     #endregion
 		
-		public BubbleBaseDataContext() : 
+		public dotBaseDataContext() : 
 				base(global::dotSearchDataContext.Properties.Settings.Default.BubbleSearchConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BubbleBaseDataContext(string connection) : 
+		public dotBaseDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BubbleBaseDataContext(System.Data.IDbConnection connection) : 
+		public dotBaseDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BubbleBaseDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dotBaseDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public BubbleBaseDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public dotBaseDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
