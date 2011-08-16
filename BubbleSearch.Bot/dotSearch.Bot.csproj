@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dotSearch.Bot</RootNamespace>
-    <AssemblyName>BubbleSearch.Bot</AssemblyName>
+    <AssemblyName>dotSearch.Bot</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -32,7 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\..\Desktop\XMLDoc\BubbleSearch.Bot.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\..\Desktop\XMLDoc\dotSearch.Bot.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
