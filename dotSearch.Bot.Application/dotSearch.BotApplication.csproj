@@ -95,6 +95,12 @@
   <ItemGroup>
     <Resource Include="icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BubbleSearch.Bot\dotSearch.Bot.csproj">
+      <Project>{D2B5F30C-5118-4BA9-B96C-DF453A102D5F}</Project>
+      <Name>dotSearch.Bot</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

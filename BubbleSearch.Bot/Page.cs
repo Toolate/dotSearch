@@ -137,7 +137,7 @@ namespace dotSearch.Bot
                     List<string> ImageDetails = new List<string>();
 
                     foreach (HtmlNode img in imgCollection)
-                    {
+                    {                        
                         //Recuperation du contexte de l'image, description, titre:
                         src = this.Protocol + this.Domain + img.GetAttributeValue("src", "test").ToString();
                         src = UrlHelper.ComposeUrl(this.Url, this.Domain, src);

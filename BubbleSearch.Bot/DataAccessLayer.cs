@@ -16,8 +16,8 @@ namespace dotSearch.Bot
         /// <param name="page">objet page à insérer en base</param>
         public static void AddPage(Page page)
         {
-            dotSearchDataContext.BubbleBaseDataContext context = null;
-            context = new dotSearchDataContext.BubbleBaseDataContext();
+            dotSearchDataContext.dotBaseDataContext context = null;
+            context = new dotSearchDataContext.dotBaseDataContext();
 
             if (page.Domain != null && (page.Occurences.Count > 0 || page.Images.Count > 0) && page.Url != null)
             {
