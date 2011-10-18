@@ -32,8 +32,11 @@ namespace dotSearch.Bot
     /// </summary>
     public class BotPage
     {
-        public int Depth {
-            get; set; }
+        public int Depth
+        {
+            get;
+            set;
+        }
         public List<Page> Pages { get; set; }
         public List<Link> BotLinks { get; set; }
         public List<string> Errors { get; set; }
@@ -69,7 +72,7 @@ namespace dotSearch.Bot
             try
             {
                 WebClient browser = new WebClient();
-                browser.Proxy.Credentials = new NetworkCredential("vestri_a06", "ExkBHUah", ".");
+                browser.Proxy.Credentials = new NetworkCredential("avestri", "biztalk2011");
                 UTF8Encoding enc = new UTF8Encoding();
                 return enc.GetString(browser.DownloadData(url)).ToLower();
             }
@@ -106,7 +109,7 @@ namespace dotSearch.Bot
         public void Parcours(string Url, int Depth)
         {
             if (Depth > 0)
-            { 
+            {
                 string PageContent = LoadPage(Url);
                 if (PageContent != null)
                 {
@@ -136,15 +139,15 @@ namespace dotSearch.Bot
                     CurrentDepth--;
                     //insertion de la page en base
                     DataAccessLayer.AddPage(Pages[i]);
-                    for (int j=0; j<Pages[i].InternalLinks.Count; j++)
+                    for (int j = 0; j < Pages[i].InternalLinks.Count; j++)
                     {
                         if (!this.BotLinks.Contains(new Link(Pages[i].InternalLinks[j], false)))
                         {
                             this.BotLinks.Add(new Link(Pages[i].InternalLinks[j], false));
                         }
                     }
-                    
-                    for (int j=0; j<Pages[i].ExternalLinks.Count; j++)
+
+                    for (int j = 0; j < Pages[i].ExternalLinks.Count; j++)
                     {
                         if (!this.BotLinks.Contains(new Link(Pages[i].ExternalLinks[j], false)))
                         {
@@ -152,10 +155,10 @@ namespace dotSearch.Bot
                         }
                     }
 
-                    
+
                     Pages.RemoveAt(i);
 
-                    for (int j=0; j<BotLinks.Count; j++) //à chaque lien interne de la pile du bot on crée une page et on parcours les infos 
+                    for (int j = 0; j < BotLinks.Count; j++) //à chaque lien interne de la pile du bot on crée une page et on parcours les infos 
                     {
                         if (BotLinks[j].Treated == false)
                         {
@@ -164,7 +167,7 @@ namespace dotSearch.Bot
                         }
                     }
 
-                    if (CurrentDepth == 0) {break; }
+                    if (CurrentDepth == 0) { break; }
                 }
 
             }

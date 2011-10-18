@@ -44,6 +44,7 @@ namespace dotSearch.Bot
             Images = new List<Image>();
             Occurences = new Dictionary<string, int>();
             Rank = 0;//GetRanking(GetDomain(url));
+
             HtmlContent = new HtmlDocument();
             HtmlContent.LoadHtml(PageContent);
 
@@ -56,24 +57,19 @@ namespace dotSearch.Bot
         /// <returns></returns>
         public static string GetDomain(string url)
         {
-
-            if (url.Substring(0, 7).CompareTo("http://") == 0)
-                url = url.Remove(0, 7);
-            else if (url.Substring(0, 8).CompareTo("https://") == 0)
-                url = url.Remove(0, 8);
-            if (url.Substring(0, 4).CompareTo("www.") == 0)
-                url = url.Remove(0, 4);
-
+            if (url.Contains("://"))
+            {
+                url = Regex.Split(url, "://")[1];
+            }
             return url.Split('/')[0];
 
         }
 
         public string GetProtocol(string url)
         {
-            if (url.Substring(0, 8).CompareTo("https://") == 0)
-                return "https://";
-            else return "http://"; //autre protocole volontairement ignoré
-
+            if (url.Contains("://"))
+                return Regex.Split(url, "://")[0] + "://";
+            else return "";
         }
         /// <summary>
         /// Méthode recuperant les informations de la page
@@ -143,8 +139,9 @@ namespace dotSearch.Bot
                     foreach (HtmlNode img in imgCollection)
                     {
                         //Recuperation du contexte de l'image, description, titre:
-                        src = this.Protocol + this.Domain + img.GetAttributeValue("src", "test").ToString();//PROBLEME: resolution d'adresse en ./ ou ../ : remonter l'adresse de la page
-                        desc = img.GetAttributeValue("alt", "false").ToString() + img.GetAttributeValue("title", "false").ToString();
+                        src = this.Protocol + this.Domain + img.GetAttributeValue("src", "test").ToString();
+                        src = UrlHelper.ComposeUrl(this.Url, this.Domain, src);
+                        desc = img.GetAttributeValue("alt", "").ToString() + img.GetAttributeValue("title", "").ToString();
 
                         //Insertion dans Images de son URL et des motclefs
                         Images.Add(new Image(Url, src, desc));
@@ -165,9 +162,47 @@ namespace dotSearch.Bot
             {
                 try
                 {
-                    List<HtmlNode> words = this.HtmlContent.DocumentNode.SelectNodes(@"//p").ToList(); //toutes les balises paragraphe
-                    words.AddRange(HtmlContent.DocumentNode.SelectNodes(@"//meta").ToList());
-
+                    List<HtmlNode> words = new List<HtmlNode>();
+                    HtmlNodeCollection TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//p");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//a");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h1");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h2");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h3");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h4");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h5");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//h6");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
 
                     if (words != null)
                     {
@@ -211,9 +246,12 @@ namespace dotSearch.Bot
                 }
                 else
                 {
-                    temp = s;
-                    cpt = 1;
-                    Occurences.Add(s, cpt);
+                    if (!s.Contains(" "))
+                    {
+                        temp = s;
+                        cpt = 1;
+                        Occurences.Add(s, cpt);
+                    }
                 }
 
             }
@@ -233,20 +271,29 @@ namespace dotSearch.Bot
 
             //Ici travail de découpage et nettoyage de la string vers une liste de mot clé
 
-            string replacement = " ";
+            string replacement = "";
             string result = null;
-            // Regex rgx = new Regex(@"(<[^<]*>)");
-            Regex rgx2 = new Regex(@"\W");
-            //Regex rgx3 = new Regex(@"&\w*;");
+            Regex rgx2 = new Regex(".:/\\,?!*µ¤~'{([-|`\"_^])}");
+            Regex rgx3 = new Regex(@" ");
             List<string> KeywordList = new List<string>();
 
             foreach (HtmlNode item in collection)
             {
-                //result = rgx.Replace((item as HtmlNode).InnerText, replacement);
-                //  result = rgx3.Replace(result, replacement);
-                result = rgx2.Replace((item as HtmlNode).InnerText, replacement);
 
-                KeywordList.AddRange(result.Split(' ').ToList());
+
+                result = rgx2.Replace((item as HtmlNode).InnerText, replacement);
+                //result = rgx3.Replace(result, replacement);
+                //result = item.InnerText;
+
+                if (result != null)
+                {
+                    string[] tabtest = result.Split(' ');
+                    foreach (string s in tabtest)
+                    {
+                        if (s != "")
+                            KeywordList.Add(s);
+                    }
+                }
             }
 
             KeywordList = (from s in KeywordList orderby s select s).ToList();
