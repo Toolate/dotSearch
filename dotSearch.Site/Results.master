@@ -15,7 +15,7 @@
             <div id="searchBar">
                 <div id="menu">
                     <a class="selected" href="">Web</a> | <a href="" class="unselected">Images</a>
-                    | <a href="" class="unselected">Vidéos</a> | <a href="" class="unselected">News</a>
+                    | <a href="" class="unselected">News</a>
                 </div>
                 <img id="logo2" src="Images/logo2.png" alt="dotSearch" />
                 <div id="searchBox">

@@ -52,11 +52,10 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ImageSearch.aspx" />
     <Content Include="ImgResults.aspx" />
-    <Content Include="index_v2.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="searchResults.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -68,13 +67,6 @@
     <Content Include="WebResults.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -92,12 +84,12 @@
     <Compile Include="ImgResults.aspx.designer.cs">
       <DependentUpon>ImgResults.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index_v2.aspx.cs">
-      <DependentUpon>index_v2.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index_v2.aspx.designer.cs">
-      <DependentUpon>index_v2.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="searchResults.aspx.cs">

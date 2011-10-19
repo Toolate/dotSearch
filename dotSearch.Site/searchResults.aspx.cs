@@ -20,11 +20,10 @@ public partial class searchResults : System.Web.UI.Page
         if (!IsPostBack || isFirstLoaded)
         {
             string userQuery = HttpContext.Current.Request.QueryString.Get("searchQuery");
-            
-            searchArea.Text = userQuery;
 
             if (!string.IsNullOrWhiteSpace(userQuery))
             {
+                searchArea.Text = userQuery;
                 var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
                     @"C:\Index",
                     new dotBaseDataContext());
@@ -33,21 +32,21 @@ public partial class searchResults : System.Web.UI.Page
                 List<dotSearchDataContext.Page> pageList = new List<dotSearchDataContext.Page>();
 
                 List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
-                                                                where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
-                                                                join o in index.DataContext.Occurrences
-                                                                on w.id_word equals o.id_word
-                                                                orderby o.nb_occur descending
-                                                                select w).ToList();
+                                                             where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
+                                                             join o in index.DataContext.Occurrences
+                                                             on w.id_word equals o.id_word
+                                                             orderby o.nb_occur descending
+                                                             select w).ToList();
 
                 foreach (dotSearchDataContext.Word item in queryWord)
                 {
                     dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
-                                                                where o.id_word.Equals(item.id_word)
-                                                                select o).FirstOrDefault();
+                                                             where o.id_word.Equals(item.id_word)
+                                                             select o).FirstOrDefault();
 
                     dotSearchDataContext.Page page = (from p in index.DataContext.Pages
-                                                         where p.id_page.Equals(occur.id_page)
-                                                         select p).FirstOrDefault();
+                                                      where p.id_page.Equals(occur.id_page)
+                                                      select p).FirstOrDefault();
                     if (!pageList.Contains(page))
                         pageList.Add(page);
                 }
@@ -80,7 +79,7 @@ public partial class searchResults : System.Web.UI.Page
                     TableCell cell4 = new TableCell();
                     row4.Height = 1;
                     row4.CssClass = "resultSeparator";
-                    cell4.BackColor = System.Drawing.Color.White;
+                    cell4.BackColor = System.Drawing.Color.Green;
                     cell4.CssClass = "resultSeparator";
                     row4.Controls.Add(cell4);
 
@@ -99,16 +98,9 @@ public partial class searchResults : System.Web.UI.Page
     {
         if (!string.IsNullOrWhiteSpace(searchArea.Text))
         {
-            if (!HttpContext.Current.Request.Url.ToString().Contains("Results.aspx?searchQuery="))
-                Response.Redirect(HttpContext.Current.Request.Url.ToString() + "Results.aspx?searchQuery=" + searchArea.Text);
-            else
-            {
-                string url = HttpContext.Current.Request.Url.ToString();
-                int index = url.ToLower().IndexOf("results.aspx?searchquery=");
-                url = url.Substring(0, index);
-                isFirstLoaded = true;
-                Response.Redirect(url + "Results.aspx?searchQuery=" + searchArea.Text);
-            }
+            string site = HttpContext.Current.Request.UrlReferrer.Authority;
+            if(!string.IsNullOrEmpty(site))
+                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + searchArea.Text);
         }
     }
 }
