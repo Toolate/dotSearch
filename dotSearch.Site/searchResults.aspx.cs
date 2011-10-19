@@ -33,25 +33,32 @@ public partial class searchResults : System.Web.UI.Page
                 long begin = DateTime.Now.Ticks;
                 List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
                                                              where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
-                                                             join o in index.DataContext.Occurrences
-                                                             on w.id_word equals o.id_word
-                                                             orderby o.nb_occur descending
                                                              select w).ToList();
 
                 foreach (dotSearchDataContext.Word item in queryWord)
                 {
-                    dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
-                                                             where o.id_word.Equals(item.id_word)
-                                                             select o).FirstOrDefault();
+                    List<dotSearchDataContext.Occurrence> occurences = (from o in index.DataContext.Occurrences
+                                                                        where o.id_word.Equals(item.id_word)
+                                                                        select o).ToList();
 
-                    dotSearchDataContext.Page page = (from p in index.DataContext.Pages
-                                                      where p.id_page.Equals(occur.id_page)
-                                                      select p).FirstOrDefault();
-                    if (!pageList.Contains(page))
-                        pageList.Add(page);
+                    foreach (dotSearchDataContext.Occurrence occur in occurences)
+                    {
+                        dotSearchDataContext.Page page = (from p in index.DataContext.Pages
+                                                          where p.id_page.Equals(occur.id_page)
+                                                          select p).FirstOrDefault();
+                        if (!pageList.Contains(page))
+                            pageList.Add(page);
+                    }
                 }
 
-                pageList.Reverse();
+                List<dotSearchDataContext.Page> pageList2 = (from p in pageList
+                                                             join oc in index.DataContext.Occurrences
+                                                             on p.id_page equals oc.id_page
+                                                             orderby oc.nb_occur ascending
+                                                             select p).ToList();
+
+                pageList2.Reverse();
+
 
                 long end = DateTime.Now.Ticks;
                 long totalTime = end - begin;
@@ -67,13 +74,13 @@ public partial class searchResults : System.Web.UI.Page
                 dtt.Columns.Add("URL");
                 dtt.Columns.Add("Description");
 
-                
-                if(pageList.Count == 0)
+
+                if (pageList.Count == 0)
                     resultsNbr.Text = "Aucun résultat trouvé";
                 else
-                    resultsNbr.Text = pageList.Count + " résultat(s) trouvé(s) en " + Math.Round(seconds, 2) + "s";                
+                    resultsNbr.Text = pageList.Count + " résultat(s) trouvé(s) en " + Math.Round(seconds, 3) + "s";
 
-                foreach (dotSearchDataContext.Page item in pageList)
+                foreach (dotSearchDataContext.Page item in pageList2)
                 {
                     string url = item.url_page;
                     string title = item.title_page;
@@ -88,7 +95,7 @@ public partial class searchResults : System.Web.UI.Page
 
                 dtt.Dispose();
                 firstTime = false;
-            } 
+            }
         }
     }
 
