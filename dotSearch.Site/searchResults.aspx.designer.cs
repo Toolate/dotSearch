@@ -12,29 +12,77 @@
 public partial class searchResults {
     
     /// <summary>
-    /// searchArea control.
+    /// SearchBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox searchArea;
+    protected global::System.Web.UI.WebControls.TextBox SearchBox;
     
     /// <summary>
-    /// searchButton control.
+    /// SearchButton control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button searchButton;
+    protected global::System.Web.UI.WebControls.Button SearchButton;
     
     /// <summary>
-    /// resultsView control.
+    /// Bing_CheckBox control.
     /// </summary>
     /// <remarks>
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Table resultsView;
+    protected global::System.Web.UI.WebControls.CheckBox Bing_CheckBox;
+    
+    /// <summary>
+    /// Google_CheckBox control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.CheckBox Google_CheckBox;
+    
+    /// <summary>
+    /// resultsNbr control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label resultsNbr;
+    
+    /// <summary>
+    /// resultsList control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ListView resultsList;
+    
+    /// <summary>
+    /// pager control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DataPager pager;
+    
+    /// <summary>
+    /// Master property.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated property.
+    /// </remarks>
+    public new dotSearch.Site.dotSearch Master {
+        get {
+            return ((dotSearch.Site.dotSearch)(base.Master));
+        }
+    }
 }

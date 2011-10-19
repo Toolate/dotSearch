@@ -13,94 +13,80 @@ public partial class searchResults : System.Web.UI.Page
 {
     public static Lucene.Linq.DatabaseIndexSet<dotBaseDataContext> index = null;
 
-    public static bool isFirstLoaded = true;
-
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack || isFirstLoaded)
+        string userQuery = HttpContext.Current.Request.QueryString.Get("searchQuery");
+
+        if (!string.IsNullOrWhiteSpace(userQuery))
         {
-            string userQuery = HttpContext.Current.Request.QueryString.Get("searchQuery");
+            SearchBox.Text = userQuery;
 
-            if (!string.IsNullOrWhiteSpace(userQuery))
+            var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
+                @"C:\Index",
+                new dotBaseDataContext());
+            index.Write();
+
+            List<dotSearchDataContext.Page> pageList = new List<dotSearchDataContext.Page>();
+            long begin = DateTime.Now.Ticks;
+            List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
+                                                         where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
+                                                         join o in index.DataContext.Occurrences
+                                                         on w.id_word equals o.id_word
+                                                         orderby o.nb_occur descending
+                                                         select w).ToList();
+
+            foreach (dotSearchDataContext.Word item in queryWord)
             {
-                searchArea.Text = userQuery;
-                var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
-                    @"C:\Index",
-                    new dotBaseDataContext());
-                index.Write();
+                dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
+                                                         where o.id_word.Equals(item.id_word)
+                                                         select o).FirstOrDefault();
 
-                List<dotSearchDataContext.Page> pageList = new List<dotSearchDataContext.Page>();
-
-                List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
-                                                             where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
-                                                             join o in index.DataContext.Occurrences
-                                                             on w.id_word equals o.id_word
-                                                             orderby o.nb_occur descending
-                                                             select w).ToList();
-
-                foreach (dotSearchDataContext.Word item in queryWord)
-                {
-                    dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
-                                                             where o.id_word.Equals(item.id_word)
-                                                             select o).FirstOrDefault();
-
-                    dotSearchDataContext.Page page = (from p in index.DataContext.Pages
-                                                      where p.id_page.Equals(occur.id_page)
-                                                      select p).FirstOrDefault();
-                    if (!pageList.Contains(page))
-                        pageList.Add(page);
-                }
-
-                DataTable dt = new DataTable();
-
-                dt.Columns.Add();
-
-                foreach (dotSearchDataContext.Page item in pageList)
-                {
-                    TableRow row = new TableRow();
-                    TableCell cell = new TableCell();
-                    HyperLink link = new HyperLink();
-                    link.NavigateUrl = item.url_page;
-                    link.Text = item.title_page;
-                    cell.Controls.Add(link);
-                    row.Controls.Add(cell);
-
-                    TableRow row2 = new TableRow();
-                    TableCell cell2 = new TableCell();
-                    cell2.Text = item.description_page;
-                    row2.Controls.Add(cell2);
-
-                    TableRow row3 = new TableRow();
-                    TableCell cell3 = new TableCell();
-                    cell3.Text = item.url_page;
-                    row3.Controls.Add(cell3);
-
-                    TableRow row4 = new TableRow();
-                    TableCell cell4 = new TableCell();
-                    row4.Height = 1;
-                    row4.CssClass = "resultSeparator";
-                    cell4.BackColor = System.Drawing.Color.Green;
-                    cell4.CssClass = "resultSeparator";
-                    row4.Controls.Add(cell4);
-
-                    resultsView.Controls.Add(row);
-                    resultsView.Controls.Add(row2);
-                    resultsView.Controls.Add(row3);
-                    resultsView.Controls.Add(row4);
-                }
-
-                isFirstLoaded = false;
+                dotSearchDataContext.Page page = (from p in index.DataContext.Pages
+                                                  where p.id_page.Equals(occur.id_page)
+                                                  select p).FirstOrDefault();
+                if (!pageList.Contains(page))
+                    pageList.Add(page);
             }
+            long end = DateTime.Now.Ticks;
+            long totalTime = end - begin;
+            TimeSpan ts = TimeSpan.FromTicks(totalTime);
+            double seconds = ts.TotalSeconds; 
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add();
+
+            DataTable dtt = new DataTable();
+            dtt.Columns.Add("Title");
+            dtt.Columns.Add("URL");
+            dtt.Columns.Add("Description");
+
+            resultsNbr.Text = pageList.Count + " resultat(s) trouve(s) en " + Math.Round(seconds,2)  + "s";
+
+            foreach (dotSearchDataContext.Page item in pageList)
+            {
+                string url = item.url_page;
+                string title = item.title_page;
+                string description = item.description_page;
+
+                string[] infoArray = { title, url, description };
+
+                dtt.LoadDataRow(infoArray, LoadOption.OverwriteChanges);
+            }
+            resultsList.DataSource = dtt;
+            resultsList.DataBind();
+
+            dtt.Dispose();
         }
     }
 
-    protected void searchButton_Click(object sender, EventArgs e)
+    protected void SearchButton_Click(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(searchArea.Text))
+        if (!string.IsNullOrWhiteSpace(SearchBox.Text))
         {
             string site = HttpContext.Current.Request.UrlReferrer.Authority;
-            if(!string.IsNullOrEmpty(site))
-                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + searchArea.Text);
+            if (!string.IsNullOrEmpty(site))
+                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + SearchBox.Text);
         }
     }
 }

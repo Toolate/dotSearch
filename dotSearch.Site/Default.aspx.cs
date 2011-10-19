@@ -19,10 +19,9 @@ public partial class Default : System.Web.UI.Page
     {
         if (!string.IsNullOrWhiteSpace(searchBox.Text))
         {
-            string url = HttpContext.Current.Request.Url.ToString();
-            int index = url.ToLower().IndexOf("default.aspx");
-            url = url.Substring(0, index);
-            Response.Redirect(url + "Results.aspx?searchQuery=" + searchBox.Text);
+            string site = HttpContext.Current.Request.UrlReferrer.Authority;
+            if (!string.IsNullOrEmpty(site))
+                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + searchBox.Text);
         }
     }
 }

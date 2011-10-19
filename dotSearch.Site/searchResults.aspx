@@ -1,31 +1,57 @@
-﻿<%@ Page Title="Resultats de votre recherche" Language="C#" MasterPageFile="~/Results.master"
-    Inherits="searchResults" Codebehind="~/searchResults.aspx.cs" AutoEventWireup="True" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dotSearch.Master" AutoEventWireup="true"
+    Inherits="searchResults" CodeBehind="searchResults.aspx.cs" %>
 
+<%@ MasterType VirtualPath="~/dotSearch.Master" %>
 
-<asp:Content ContentPlaceHolderID="SearchResults_cph" ID="SearchResults_cph" runat="server">
-    <center>
-        <div id="all">
-            <div id="bloc2" style="background:url("Images/bg.jpg")">
-                <div id="logo2">
-                    <img src='Images/logo.png' width="80px" />
-                </div>
-                <div id="recherche">
-                    <asp:TextBox runat="server" ID="searchArea" />
-                    &nbsp;
-                    <asp:Button Text="Rechercher" runat="server" ID="searchButton" OnClick="searchButton_Click" />
-                </div>
-            </div>
-            <div id="result" style="color:White">
-                <asp:Table runat="server" ID="resultsView" Width="90%">
-                </asp:Table>
-            </div>
-            <div id="testData">
-                <asp:DataList runat="server">
-                    <ItemTemplate>
-                        <asp:Label Text="testResult" runat="server" />
-                    </ItemTemplate>
-                </asp:DataList>
-            </div>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link href="Styles/results.css" rel="stylesheet" type="text/css" />
+</asp:Content>
+<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="SearchBar_cph">
+    <div id="searchBar">
+        <div id="menu">
+            <a class="selected" href="">Web</a> | <a href="" class="unselected">Images</a> |
+            <a href="" class="unselected">News</a>
         </div>
-    </center>
-    </asp:Content>
+        <img id="logo2" src="Images/logo2.png" alt="dotSearch" />
+        <div id="searchBox">
+            <asp:TextBox ID="SearchBox" Width="300px" runat="server" />
+            <asp:Button ID="SearchButton" runat="server" Text=".Search!" OnClick="SearchButton_Click" />
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="SearchResults_cph" runat="Server">
+    <div id="searchOptions">
+        <div>
+            <asp:CheckBox ID="Bing_CheckBox" runat="server" />
+            <img class="searchOption" src="Images/moteurs/bing.png" alt="chercher avec bing" /></div>
+        <br />
+        <div>
+            <asp:CheckBox ID="Google_CheckBox" runat="server" />
+            <img class="searchOption" src="Images/moteurs/google.png" alt="chercher avec google" /></div>
+        <br />
+    </div>
+    <div id="results">
+        <asp:Label ID="resultsNbr" runat="server" />
+        <br />
+        <br />
+        <asp:ListView ID="resultsList" runat="server">
+            <ItemTemplate>
+                <img class="dot" src="Images/dot.png" alt="dotSearch" />
+                <p class="titre">
+                    <asp:HyperLink ID="title" runat="server" Text='<%#Eval("Title") %>' NavigateUrl='<%#Eval("URL")%>'></asp:HyperLink>
+                </p>
+                <p class="content">
+                    <asp:Label ID="description" Text='<%#Eval("Description") %>' runat="server" />
+                </p>
+                <p class="url">
+                    <asp:Label ID="url" Text='<%#Eval("URL") %>' runat="server" />
+                </p>
+            </ItemTemplate>
+        </asp:ListView>
+        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="20">
+            <Fields>
+                <asp:NumericPagerField />
+            </Fields>
+        </asp:DataPager>
+    </div>
+</asp:Content>
