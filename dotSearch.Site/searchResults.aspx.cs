@@ -50,6 +50,9 @@ public partial class searchResults : System.Web.UI.Page
                     if (!pageList.Contains(page))
                         pageList.Add(page);
                 }
+
+                pageList.Reverse();
+
                 long end = DateTime.Now.Ticks;
                 long totalTime = end - begin;
                 TimeSpan ts = TimeSpan.FromTicks(totalTime);
