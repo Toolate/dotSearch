@@ -12,71 +12,80 @@ using System.Diagnostics;
 public partial class searchResults : System.Web.UI.Page
 {
     public static Lucene.Linq.DatabaseIndexSet<dotBaseDataContext> index = null;
+    public static bool firstTime = true;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string userQuery = HttpContext.Current.Request.QueryString.Get("searchQuery");
-
-        if (!string.IsNullOrWhiteSpace(userQuery))
+        if (firstTime)
         {
-            SearchBox.Text = userQuery;
+            string userQuery = HttpContext.Current.Request.QueryString.Get("searchQuery");
 
-            var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
-                @"C:\Index",
-                new dotBaseDataContext());
-            index.Write();
-
-            List<dotSearchDataContext.Page> pageList = new List<dotSearchDataContext.Page>();
-            long begin = DateTime.Now.Ticks;
-            List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
-                                                         where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
-                                                         join o in index.DataContext.Occurrences
-                                                         on w.id_word equals o.id_word
-                                                         orderby o.nb_occur descending
-                                                         select w).ToList();
-
-            foreach (dotSearchDataContext.Word item in queryWord)
+            if (!string.IsNullOrWhiteSpace(userQuery))
             {
-                dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
-                                                         where o.id_word.Equals(item.id_word)
-                                                         select o).FirstOrDefault();
+                SearchBox.Text = userQuery;
 
-                dotSearchDataContext.Page page = (from p in index.DataContext.Pages
-                                                  where p.id_page.Equals(occur.id_page)
-                                                  select p).FirstOrDefault();
-                if (!pageList.Contains(page))
-                    pageList.Add(page);
-            }
-            long end = DateTime.Now.Ticks;
-            long totalTime = end - begin;
-            TimeSpan ts = TimeSpan.FromTicks(totalTime);
-            double seconds = ts.TotalSeconds; 
+                var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
+                    @"C:\Index",
+                    new dotBaseDataContext());
+                index.Write();
 
-            DataTable dt = new DataTable();
+                List<dotSearchDataContext.Page> pageList = new List<dotSearchDataContext.Page>();
+                long begin = DateTime.Now.Ticks;
+                List<dotSearchDataContext.Word> queryWord = (from w in index.DataContext.Words
+                                                             where w.txt_word.Contains(userQuery) || w.txt_word.Equals(userQuery)
+                                                             join o in index.DataContext.Occurrences
+                                                             on w.id_word equals o.id_word
+                                                             orderby o.nb_occur descending
+                                                             select w).ToList();
 
-            dt.Columns.Add();
+                foreach (dotSearchDataContext.Word item in queryWord)
+                {
+                    dotSearchDataContext.Occurrence occur = (from o in index.DataContext.Occurrences
+                                                             where o.id_word.Equals(item.id_word)
+                                                             select o).FirstOrDefault();
 
-            DataTable dtt = new DataTable();
-            dtt.Columns.Add("Title");
-            dtt.Columns.Add("URL");
-            dtt.Columns.Add("Description");
+                    dotSearchDataContext.Page page = (from p in index.DataContext.Pages
+                                                      where p.id_page.Equals(occur.id_page)
+                                                      select p).FirstOrDefault();
+                    if (!pageList.Contains(page))
+                        pageList.Add(page);
+                }
+                long end = DateTime.Now.Ticks;
+                long totalTime = end - begin;
+                TimeSpan ts = TimeSpan.FromTicks(totalTime);
+                double seconds = ts.TotalSeconds;
 
-            resultsNbr.Text = pageList.Count + " resultat(s) trouve(s) en " + Math.Round(seconds,2)  + "s";
+                DataTable dt = new DataTable();
 
-            foreach (dotSearchDataContext.Page item in pageList)
-            {
-                string url = item.url_page;
-                string title = item.title_page;
-                string description = item.description_page;
+                dt.Columns.Add();
 
-                string[] infoArray = { title, url, description };
+                DataTable dtt = new DataTable();
+                dtt.Columns.Add("Title");
+                dtt.Columns.Add("URL");
+                dtt.Columns.Add("Description");
 
-                dtt.LoadDataRow(infoArray, LoadOption.OverwriteChanges);
-            }
-            resultsList.DataSource = dtt;
-            resultsList.DataBind();
+                
+                if(pageList.Count == 0)
+                    resultsNbr.Text = "Aucun résultat trouvé";
+                else
+                    resultsNbr.Text = pageList.Count + " résultat(s) trouvé(s) en " + Math.Round(seconds, 2) + "s";                
 
-            dtt.Dispose();
+                foreach (dotSearchDataContext.Page item in pageList)
+                {
+                    string url = item.url_page;
+                    string title = item.title_page;
+                    string description = item.description_page;
+
+                    string[] infoArray = { title, url, description };
+
+                    dtt.LoadDataRow(infoArray, LoadOption.OverwriteChanges);
+                }
+                resultsList.DataSource = dtt;
+                resultsList.DataBind();
+
+                dtt.Dispose();
+                firstTime = false;
+            } 
         }
     }
 
@@ -84,6 +93,7 @@ public partial class searchResults : System.Web.UI.Page
     {
         if (!string.IsNullOrWhiteSpace(SearchBox.Text))
         {
+            firstTime = true;
             string site = HttpContext.Current.Request.UrlReferrer.Authority;
             if (!string.IsNullOrEmpty(site))
                 Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + SearchBox.Text);
