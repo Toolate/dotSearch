@@ -7,7 +7,7 @@ namespace dotSearch.Bot
 {
     /// <summary>
     /// Objet image
-    /// src: chemin url de l'image
+    /// src: chemin url de l'image 
     /// Keywords: liste de string definissant l'image et son contenu
     /// </summary>
     public class Image

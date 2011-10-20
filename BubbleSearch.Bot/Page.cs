@@ -156,7 +156,7 @@ namespace dotSearch.Bot
 
 
         /// <summary>
-        /// Recupere les mots clefs de la page et appel KeywordsAnalysis()
+        /// Recupere les mots clefs de la page et appel KeywordsAnalysis() 
         /// </summary>
         public void ParseKeywords()
         {

@@ -48,7 +48,7 @@ namespace dotSearch.BotApplication
 
         private void Depth_textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Depth_slider.Value = Double.Parse(Depth_textBox.Text);
+            //Depth_slider.Value = Double.Parse(Depth_textBox.Text);
         }
 
     }

@@ -10,7 +10,7 @@ namespace dotSearch.Bot
         public string DomainName { get; set; }
         int Ranking;
 
-        public Domain(string Domain)
+        public Domain(string Domain) 
         {
             DomainName = Domain;
             Ranking = 0;

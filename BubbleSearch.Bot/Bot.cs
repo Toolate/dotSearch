@@ -164,7 +164,6 @@ namespace dotSearch.Bot
                         }
                     }
 
-
                     Pages.RemoveAt(i);
 
                     for (int j = 0; j < BotLinks.Count; j++) //à chaque lien interne de la pile du bot on crée une page et on parcours les infos 
