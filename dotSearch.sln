@@ -25,6 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlAgilityPack", "HtmlAgil
 		HtmlAgilityPack.XML = HtmlAgilityPack.XML
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSon.NET", "JSon.NET", "{89D040C0-8DDB-412D-8CF3-EC1998C4F873}"
+	ProjectSection(SolutionItems) = preProject
+		Newtonsoft.Json.dll = Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,5 +106,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8319F3D8-CFC4-4FAB-8030-F841E749CB13} = {F4223D3E-3C44-43F3-8A7A-3560EFE55D75}
+		{89D040C0-8DDB-412D-8CF3-EC1998C4F873} = {F4223D3E-3C44-43F3-8A7A-3560EFE55D75}
 	EndGlobalSection
 EndGlobal

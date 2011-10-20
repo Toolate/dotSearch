@@ -22,11 +22,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="SearchResults_cph" runat="Server">
     <div id="searchOptions">
         <div>
-            <asp:CheckBox ID="Bing_CheckBox" runat="server" />
+            <asp:CheckBox ID="Bing_CheckBox" runat="server" ViewStateMode="Enabled" 
+                oncheckedchanged="Bing_CheckBox_CheckedChanged"/>
             <img class="searchOption" src="Images/moteurs/bing.png" alt="chercher avec bing" /></div>
         <br />
         <div>
-            <asp:CheckBox ID="Google_CheckBox" runat="server" />
+            <asp:CheckBox ID="Google_CheckBox" runat="server" ViewStateMode="Enabled" 
+                oncheckedchanged="Google_CheckBox_CheckedChanged" />
             <img class="searchOption" src="Images/moteurs/google.png" alt="chercher avec google" /></div>
         <br />
     </div>
@@ -48,7 +50,7 @@
                 </p>
             </ItemTemplate>
         </asp:ListView>
-        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="20">
+        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="20" >
             <Fields>
                 <asp:NumericPagerField />
             </Fields>

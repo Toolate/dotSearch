@@ -14,6 +14,8 @@ public partial class searchResults : System.Web.UI.Page
 {
     public static Lucene.Linq.DatabaseIndexSet<dotBaseDataContext> index = null;
     public static bool firstTime = true;
+    public static bool googleCheck = false;
+    public static bool bingCheck = false;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -24,6 +26,8 @@ public partial class searchResults : System.Web.UI.Page
             if (!string.IsNullOrWhiteSpace(userQuery))
             {
                 SearchBox.Text = userQuery;
+                Google_CheckBox.Checked = googleCheck;
+                Bing_CheckBox.Checked = bingCheck;
 
                 var index = new Lucene.Linq.DatabaseIndexSet<dotBaseDataContext>(
                     @"C:\Index",
@@ -107,7 +111,7 @@ public partial class searchResults : System.Web.UI.Page
                     List<dotSearchResult> finalResult = new List<dotSearchResult>();
                     foreach (dotSearchResult pageResult in resultList)
                     {
-                        if (!finalResult.Contains(pageResult))
+                        if (!finalResult.Exists(delegate(dotSearchResult p) { return p.pageID == pageResult.pageID;} ))
                         {
                             try
                             {
@@ -123,9 +127,7 @@ public partial class searchResults : System.Web.UI.Page
                                 continue;
                             }
                         }
-                    }
-
-                    finalResult = finalResult.OrderByDescending(p => p.dotPriority).ToList();
+                    }                    
                     #endregion                    
 
                     #region Binding a la ListView
@@ -138,6 +140,12 @@ public partial class searchResults : System.Web.UI.Page
                     dtt.Columns.Add("URL");
                     dtt.Columns.Add("Description");
 
+                    if (googleCheck)
+                        finalResult.AddRange(dotHelper.GoogleSearch(userQuery));
+                    if(bingCheck)
+                        finalResult.AddRange(dotHelper.BingSearch(userQuery));
+
+                    finalResult = finalResult.OrderByDescending(p => p.dotPriority).ToList();
 
                     if (finalResult.Count == 0)
                         resultsNbr.Text = "Aucun résultat trouvé";
@@ -172,7 +180,17 @@ public partial class searchResults : System.Web.UI.Page
             firstTime = true;
             string site = HttpContext.Current.Request.UrlReferrer.Authority;
             if (!string.IsNullOrEmpty(site))
-                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + SearchBox.Text);
+                Response.Redirect("http://" + site + "/searchResults.aspx?searchQuery=" + SearchBox.Text);            
         }
+    }
+
+    protected void Google_CheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        googleCheck = Google_CheckBox.Checked;
+    }
+
+    protected void Bing_CheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        bingCheck = Bing_CheckBox.Checked;
     }
 }
