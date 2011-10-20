@@ -95,6 +95,7 @@
     <Compile Include="dotSearch.Master.designer.cs">
       <DependentUpon>dotSearch.Master</DependentUpon>
     </Compile>
+    <Compile Include="dotSearchResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
