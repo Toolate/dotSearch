@@ -52,6 +52,10 @@ namespace dotSearch.Bot
 
                     context.Pages.InsertOnSubmit(bddPage);
                 }
+                else
+                {
+                    //update de la page
+                }
 
 
 
@@ -65,6 +69,10 @@ namespace dotSearch.Bot
                         word.id_word = Guid.NewGuid();
                         word.txt_word = pair.Key;
                         context.Words.InsertOnSubmit(word);
+                    }
+                    else
+                    {
+                        //update
                     }
 
 
