@@ -160,7 +160,7 @@ namespace dotSearch.Bot
         /// </summary>
         public void ParseKeywords()
         {
-            if (HtmlContent != null)//Si page non vide, on analyse le contenu textuel pour trouver les mots cles
+            if (HtmlContent != null)//Si page non vide, on analyse le contenu textuel pour trouver les mots cles 
             { 
                 try
                 {

@@ -10,7 +10,7 @@ namespace dotSearch.Bot
     class UrlHelper
     {
         /// <summary> 
-        /// Création d'une adresse en fonction du type de l'adresse (relative/absolue)
+        /// Création  d'une adresse en fonction du type de l'adresse (relative/absolue)
         /// et de l'adresse de la page sur laquelle se trouve l'adresse.
         /// </summary>
         /// <param name="pageAdress">URL de la page contenant l'adresse</param>
