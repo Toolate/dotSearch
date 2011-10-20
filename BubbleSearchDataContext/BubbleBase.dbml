@@ -3,7 +3,7 @@
   <Table Name="dbo.Category" Member="Categories">
     <Type Name="Category">
       <Column Name="id_category" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name_category" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="name_category" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="Category_Site" Member="Sites" ThisKey="id_category" OtherKey="ID_CATEGORY" Type="Site" />
     </Type>
   </Table>
@@ -28,8 +28,8 @@
     <Type Name="Page">
       <Column Name="id_page" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id_site_parent" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="url_page" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="title_page" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="url_page" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="title_page" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="description_page" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="Page_Occurrence" Member="Occurrences" ThisKey="id_page" OtherKey="id_page" Type="Occurrence" />
       <Association Name="Page_Resource" Member="Resources" ThisKey="id_page" OtherKey="id_page" Type="Resource" />
@@ -49,8 +49,8 @@
     <Type Name="Resource">
       <Column Name="id_resource" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id_page" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="type_resx" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="name_resx" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type_resx" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="name_resx" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="url_resx" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Association Name="Page_Resource" Member="Page" ThisKey="id_page" OtherKey="id_page" Type="Page" IsForeignKey="true" />
     </Type>
@@ -61,7 +61,7 @@
       <Column Name="URL_SITE" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="ID_CATEGORY" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TITLE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TITLE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="QI" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Site_Page" Member="Pages" ThisKey="ID_SITE" OtherKey="id_site_parent" Type="Page" />
       <Association Name="Site_Reference" Member="References" ThisKey="ID_SITE" OtherKey="id_site_destination" Type="Reference" />

@@ -50,7 +50,7 @@
                 </p>
             </ItemTemplate>
         </asp:ListView>
-        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="20" >
+        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="30" >
             <Fields>
                 <asp:NumericPagerField />
             </Fields>
