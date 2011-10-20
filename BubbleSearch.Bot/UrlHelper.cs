@@ -9,7 +9,7 @@ namespace dotSearch.Bot
 {
     class UrlHelper
     {
-        /// <summary>
+        /// <summary> 
         /// Création d'une adresse en fonction du type de l'adresse (relative/absolue)
         /// et de l'adresse de la page sur laquelle se trouve l'adresse.
         /// </summary>
@@ -25,8 +25,8 @@ namespace dotSearch.Bot
             }
             else //sinon adresse relative
             {
-                Uri BaseAdress = new Uri(GetURLWithoutFileName(pageAdress));
-                Uri URIComposed = new Uri("");
+                Uri BaseAdress = new Uri(pageAdress);
+                Uri URIComposed = new Uri("http://uri.com");
                 if (Uri.TryCreate(BaseAdress, adress, out URIComposed))
                 {
                     return URIComposed.ToString();
@@ -47,6 +47,16 @@ namespace dotSearch.Bot
                 UrlWithoutFileName = UrlWithoutFileName + UrlArray[i] + "/";
             }
             return UrlWithoutFileName;
+        }
+
+        /// <summary>
+        /// Helper to remove all spaces on a given string 
+        /// </summary>
+        /// <param name="url">string to clean</param>
+        /// <returns>cleaned string</returns>
+        public static string DeleteSpaces (string url)
+        {
+           return url.Replace(" ","") ;
         }
     }
 }

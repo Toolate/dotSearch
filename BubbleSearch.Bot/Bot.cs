@@ -73,8 +73,17 @@ namespace dotSearch.Bot
             {
                 WebClient browser = new WebClient();
                 browser.Proxy.Credentials = new NetworkCredential("avestri", "biztalk2011");
-                UTF8Encoding enc = new UTF8Encoding();
-                return enc.GetString(browser.DownloadData(url)).ToLower();
+                //browser.Encoding = Encoding.UTF8;      
+                Encoding enc = Encoding.GetEncoding("UTF-8");
+                Byte[] PageByte = browser.DownloadData(url);
+                string webpage = enc.GetString(PageByte).ToLower();
+
+                if (webpage.Contains("charset=iso-8859-1"))
+                {
+                    enc = Encoding.GetEncoding("iso-8859-1");
+                    webpage = enc.GetString(PageByte).ToLower();
+                }
+                return webpage;
             }
             catch (Exception e)
             {
@@ -154,7 +163,6 @@ namespace dotSearch.Bot
                             this.BotLinks.Add(new Link(Pages[i].ExternalLinks[j], false));
                         }
                     }
-
 
                     Pages.RemoveAt(i);
 

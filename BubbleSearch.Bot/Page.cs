@@ -38,16 +38,14 @@ namespace dotSearch.Bot
             this.Url = url;
             this.Domain = GetDomain(url);
             this.Protocol = GetProtocol(url);
-
             InternalLinks = new List<string>();
             ExternalLinks = new List<string>();
             Images = new List<Image>();
             Occurences = new Dictionary<string, int>();
             Rank = 0;//GetRanking(GetDomain(url));
-
             HtmlContent = new HtmlDocument();
+            PageContent = System.Net.WebUtility.HtmlDecode(PageContent);
             HtmlContent.LoadHtml(PageContent);
-
         }
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace dotSearch.Bot
             {
                 HtmlNode leNode = this.HtmlContent.DocumentNode.SelectSingleNode("/html/head/title");
                 if (leNode != null)
-                    this.Name = leNode.InnerText;
+                    this.Name = System.Net.WebUtility.HtmlDecode(leNode.InnerText);
 
             }
         }
@@ -139,12 +137,16 @@ namespace dotSearch.Bot
                     foreach (HtmlNode img in imgCollection)
                     {                        
                         //Recuperation du contexte de l'image, description, titre:
-                        src = this.Protocol + this.Domain + img.GetAttributeValue("src", "test").ToString();
+                        src = img.GetAttributeValue("src", "test").ToString();
                         src = UrlHelper.ComposeUrl(this.Url, this.Domain, src);
                         desc = img.GetAttributeValue("alt", "").ToString() + img.GetAttributeValue("title", "").ToString();
-
+                        desc = desc.Replace("<br/>", " ");
+                        desc = desc.Trim();
                         //Insertion dans Images de son URL et des motclefs
-                        Images.Add(new Image(Url, src, desc));
+                        if (desc != "")
+                        {
+                            Images.Add(new Image(Url, src, desc));
+                        }
 
                     }
                 }
@@ -154,12 +156,12 @@ namespace dotSearch.Bot
 
 
         /// <summary>
-        /// Recupere les mots clefs de la page et appel KeywordsAnalysis()
+        /// Recupere les mots clefs de la page et appel KeywordsAnalysis() 
         /// </summary>
         public void ParseKeywords()
         {
             if (HtmlContent != null)//Si page non vide, on analyse le contenu textuel pour trouver les mots cles
-            {
+            { 
                 try
                 {
                     List<HtmlNode> words = new List<HtmlNode>();
@@ -169,6 +171,11 @@ namespace dotSearch.Bot
                         words.AddRange(TempNodeCollection.ToList());
                     }
                     TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"//a");
+                    if (TempNodeCollection != null && TempNodeCollection.Count > 0)
+                    {
+                        words.AddRange(TempNodeCollection.ToList());
+                    }
+                    TempNodeCollection = this.HtmlContent.DocumentNode.SelectNodes(@"/html/head/title");
                     if (TempNodeCollection != null && TempNodeCollection.Count > 0)
                     {
                         words.AddRange(TempNodeCollection.ToList());
@@ -217,7 +224,7 @@ namespace dotSearch.Bot
             }
         }
 
-        public void KeywordsAnalysis(List<string> collection)
+     /*   public void KeywordsAnalysis(List<string> collection)
         {
 
             //Ici travail de découpage et nettoyage de la string vers une liste de mot clé
@@ -239,59 +246,67 @@ namespace dotSearch.Bot
 
             foreach (string s in KeywordList)
             {
-                if (temp.CompareTo(s) == 0)
+                string sCleaned = UrlHelper.DeleteSpaces(s);
+
+                if (temp.CompareTo(sCleaned) == 0)
                 {
                     cpt++;
-                    Occurences[s] = cpt;
+                    Occurences[sCleaned] = cpt;
                 }
                 else
                 {
-                    if (!s.Contains(" "))
-                    {
-                        temp = s;
+                        
+                        temp = sCleaned;
                         cpt = 1;
-                        Occurences.Add(s, cpt);
-                    }
+                        Occurences.Add(sCleaned, cpt);
                 }
 
             }
         }
 
-
+        */
 
 
 
 
         /// <summary>
-        /// Analyse des strings, insere les mots clefs et leur occurence dans le dictionnaire Occurences
-        /// </summary>
-        /// <param name="collection">Collection de mots</param>
+        /// String analyser, word occurences counter before dictionnary insertion
+                /// </summary>
+        /// <param name="collection">Keywords Collection</param>
         public void KeywordsAnalysis(IEnumerable<HtmlNode> collection)
         {
 
             //Ici travail de découpage et nettoyage de la string vers une liste de mot clé
 
-            string replacement = "";
+            string replacement = " ";
             string result = null;
-            Regex rgx2 = new Regex(".:/\\,?!*µ¤~'{([-|`\"_^])}");
-            Regex rgx3 = new Regex(@" ");
+            Regex rgx2 = new Regex(@"\s+");
+            Regex rgx = new Regex(@"\W");
+           // Regex rgx = new Regex(";.\"':$£?!/");
+            //Regex rgx3 = new Regex(@" ");
             List<string> KeywordList = new List<string>();
 
             foreach (HtmlNode item in collection)
             {
-
-
-                result = rgx2.Replace((item as HtmlNode).InnerText, replacement);
+                //result = System.Net.WebUtility.HtmlDecode(result);//Convert any HTML char in utf8 standard char
+                result = rgx.Replace((item as HtmlNode).InnerText, replacement);
+                result = rgx2.Replace(result, replacement);
+                
                 //result = rgx3.Replace(result, replacement);
                 //result = item.InnerText;
 
                 if (result != null)
                 {
+                    result = result.Trim();
                     string[] tabtest = result.Split(' ');
                     foreach (string s in tabtest)
                     {
-                        if (s != "")
-                            KeywordList.Add(s);
+                        string sCleaned = UrlHelper.DeleteSpaces(s); //Delete any spaces in the word expression
+                        if (sCleaned != "" && sCleaned.Length >1)
+                        {                            
+                            
+                            KeywordList.Add(sCleaned);
+                        }
                     }
                 }
             }
@@ -302,6 +317,7 @@ namespace dotSearch.Bot
 
             foreach (string s in KeywordList)
             {
+               
                 if (temp.CompareTo(s) == 0)
                 {
                     cpt++;
