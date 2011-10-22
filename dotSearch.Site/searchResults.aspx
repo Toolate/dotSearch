@@ -22,36 +22,37 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="SearchResults_cph" runat="Server">
     <div id="searchOptions">
-        <div>
+        <img src="Images/ajout_recherches.png" />
+        <div id="boogle">
             <asp:CheckBox ID="Bing_CheckBox" runat="server" ViewStateMode="Enabled" OnCheckedChanged="Bing_CheckBox_CheckedChanged" />
-            <img class="searchOption" src="Images/moteurs/bing.png" alt="chercher avec bing" /></div>
-        <br />
-        <div>
+            <img class="searchOption" src="Images/moteurs/bing.png" alt="chercher avec bing" />
+            <br />
             <asp:CheckBox ID="Google_CheckBox" runat="server" ViewStateMode="Enabled" OnCheckedChanged="Google_CheckBox_CheckedChanged" />
-            <img class="searchOption" src="Images/moteurs/google.png" alt="chercher avec google" /></div>
-        <br />
+            <img class="searchOption" src="Images/moteurs/google.png" alt="chercher avec google" />
+        </div>
     </div>
     <div id="results">
-        <asp:Label ID="resultsNbr" runat="server" />
-        <br />
-        <br />
-        <asp:ListView ID="resultsList" runat="server">
-            <ItemTemplate>
-                <img class="dot" src="Images/dot.png" alt="dotSearch" />
-                <p class="titre">
-                    <asp:HyperLink ID="title" runat="server" Text='<%#Eval("Title") %>' NavigateUrl='<%#Eval("URL")%>'></asp:HyperLink>
-                </p>
-                <p class="content">
-                    <asp:Label ID="description" Text='<%#Eval("Description") %>' runat="server" />
-                </p>
-                <p class="url">
-                    <asp:Label ID="url" Text='<%#Eval("URLcourte") %>' runat="server" />
-                </p>
-                <p class="engine">
-                    <asp:Label ID="Label1" Text='<%#Eval("Engine") %>' runat="server" />
-                </p>
-            </ItemTemplate>
-        </asp:ListView>
+        <div id="countNtimer">
+            <asp:Label ID="resultsNbr" runat="server" />
+        </div>
+        <div id="cadre_transparent">
+            <asp:ListView ID="resultsList" runat="server">
+                <ItemTemplate>
+                    <div id="resultat">
+                        <p class="titre">
+                            <asp:HyperLink ID="title" runat="server" Text='<%#Eval("Title") %>' NavigateUrl='<%#Eval("URL")%>'></asp:HyperLink><img
+                                class="logo_moteur" src='Images/<%#Eval("Engine") %>.png' alt="dotSearch" />
+                        </p>
+                        <p class="url">
+                            <asp:Label ID="url" Text='<%#Eval("URLcourte") %>' runat="server" />
+                        </p>
+                        <p class="content">
+                            <asp:Label ID="description" Text='<%#Eval("Description") %>' runat="server" />
+                        </p>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
         <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="25">
             <Fields>
                 <asp:NumericPagerField />

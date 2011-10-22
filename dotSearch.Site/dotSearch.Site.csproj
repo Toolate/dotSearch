@@ -58,15 +58,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\ajout_recherches.jpg" />
+    <Content Include="Images\ajout_recherches.png" />
     <Content Include="Images\Background\1.jpg" />
     <Content Include="Images\Background\2.jpg" />
     <Content Include="Images\Background\mooreajpg.jpg" />
+    <Content Include="Images\background_pitec.jpg" />
+    <Content Include="Images\background_pitec.png" />
+    <Content Include="Images\background_top.png" />
     <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bg_left.JPG" />
+    <Content Include="Images\bg_left.png" />
+    <Content Include="Images\bing.png" />
     <Content Include="Images\button.png" />
+    <Content Include="Images\cercle_bing.png" />
+    <Content Include="Images\cercle_dotsearch.png" />
+    <Content Include="Images\cercle_google.png" />
     <Content Include="Images\dot.png" />
     <Content Include="Images\dotnet.png" />
+    <Content Include="Images\dotsearch.png" />
     <Content Include="Images\esgi.png" />
+    <Content Include="Images\google_logo.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\logo2 - Copie.PNG" />
     <Content Include="Images\logo2.PNG" />
     <Content Include="Images\main_bg.png" />
     <Content Include="Images\moteurs\bing.png" />
@@ -78,7 +92,6 @@
     <Content Include="Images\top.png" />
     <Content Include="ImgResults.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Styles\Bubble.css" />
     <Content Include="Styles\imgResults.css" />
     <Content Include="Styles\master.css" />
     <Content Include="Styles\results.css" />
@@ -152,7 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dotSearch.Master" />
+    <None Include="Images\cercle_dotsearch.psd" />
     <None Include="Images\logo_ copie.PSD" />
+    <None Include="Images\moteurs\logos.psd" />
     <None Include="Images\moteurs\logo_.psd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
