@@ -10,9 +10,12 @@
     <form runat="server">
     <div id="main">
         <div id="menu">
-            <a class="selected" href="">Web</a> | <a href="img" class="unselected">Images</a> | <a href="" class="unselected">News</a>
+            <a class="selected" href="searchResults.aspx">Web</a> | <a href="ImgResults.aspx"
+                class="unselected">Images</a>
         </div>
-        <img id="logo" src="Images/logo.png" alt="Poullistri Search Engine" />
+        <a href="Default.aspx" class="unselected">
+            <img id="logo" src="Images/logo.png" alt="dotSearch" />
+        </a>
         <asp:TextBox ID="searchBox" runat="server" />
         <asp:Button ID="searchButton" Text="Search!" runat="server" 
             onclick="searchButton_Click" />

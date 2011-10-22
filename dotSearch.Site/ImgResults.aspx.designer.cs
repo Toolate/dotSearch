@@ -10,4 +10,52 @@
 
 
 public partial class ImgResults {
+    
+    /// <summary>
+    /// SearchBox control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox SearchBox;
+    
+    /// <summary>
+    /// SearchButton control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button SearchButton;
+    
+    /// <summary>
+    /// resultsNbr control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label resultsNbr;
+    
+    /// <summary>
+    /// resultsList control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ListView resultsList;
+    
+    /// <summary>
+    /// Master property.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated property.
+    /// </remarks>
+    public new dotSearch.Site.dotSearch Master {
+        get {
+            return ((dotSearch.Site.dotSearch)(base.Master));
+        }
+    }
 }

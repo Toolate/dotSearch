@@ -12,7 +12,6 @@ using Lucene.Linq.Mapping;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.Analysis;
-
 using Lucene.Net.Search;
 using Lucene.Net.QueryParsers;
 using Lucene.Linq.Expressions;

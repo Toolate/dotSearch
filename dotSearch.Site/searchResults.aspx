@@ -2,17 +2,18 @@
     Inherits="searchResults" CodeBehind="searchResults.aspx.cs" %>
 
 <%@ MasterType VirtualPath="~/dotSearch.Master" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="Styles/results.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="SearchBar_cph">
     <div id="searchBar">
         <div id="menu">
-            <a class="selected" href="">Web</a> | <a href="" class="unselected">Images</a> |
-            <a href="" class="unselected">News</a>
+            <a class="selected" href="searchResults.aspx">Web</a> | <a href="ImgResults.aspx"
+                class="unselected">Images</a>
         </div>
-        <img id="logo2" src="Images/logo2.png" alt="dotSearch" />
+        <a href="Default.aspx" class="unselected">
+            <img id="logo2" src="Images/logo2.png" alt="dotSearch" />
+        </a>
         <div id="searchBox">
             <asp:TextBox ID="SearchBox" Width="300px" runat="server" />
             <asp:Button ID="SearchButton" runat="server" Text=".Search!" OnClick="SearchButton_Click" />
@@ -22,13 +23,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="SearchResults_cph" runat="Server">
     <div id="searchOptions">
         <div>
-            <asp:CheckBox ID="Bing_CheckBox" runat="server" ViewStateMode="Enabled" 
-                oncheckedchanged="Bing_CheckBox_CheckedChanged"/>
+            <asp:CheckBox ID="Bing_CheckBox" runat="server" ViewStateMode="Enabled" OnCheckedChanged="Bing_CheckBox_CheckedChanged" />
             <img class="searchOption" src="Images/moteurs/bing.png" alt="chercher avec bing" /></div>
         <br />
         <div>
-            <asp:CheckBox ID="Google_CheckBox" runat="server" ViewStateMode="Enabled" 
-                oncheckedchanged="Google_CheckBox_CheckedChanged" />
+            <asp:CheckBox ID="Google_CheckBox" runat="server" ViewStateMode="Enabled" OnCheckedChanged="Google_CheckBox_CheckedChanged" />
             <img class="searchOption" src="Images/moteurs/google.png" alt="chercher avec google" /></div>
         <br />
     </div>
@@ -46,11 +45,14 @@
                     <asp:Label ID="description" Text='<%#Eval("Description") %>' runat="server" />
                 </p>
                 <p class="url">
-                    <asp:Label ID="url" Text='<%#Eval("URL") %>' runat="server" />
+                    <asp:Label ID="url" Text='<%#Eval("URLcourte") %>' runat="server" />
+                </p>
+                <p class="engine">
+                    <asp:Label ID="Label1" Text='<%#Eval("Engine") %>' runat="server" />
                 </p>
             </ItemTemplate>
         </asp:ListView>
-        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="30" >
+        <asp:DataPager ID="pager" PagedControlID="resultsList" runat="server" PageSize="25">
             <Fields>
                 <asp:NumericPagerField />
             </Fields>

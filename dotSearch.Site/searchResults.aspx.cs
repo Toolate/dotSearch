@@ -57,7 +57,8 @@ public partial class searchResults : System.Web.UI.Page
                                                             pageTitle = p.title_page,
                                                             pageUrl = p.url_page,
                                                             pageDescription = p.description_page,
-                                                            pageID = p.id_page
+                                                            pageID = p.id_page,
+                                                            engine = dotSearchEngine.dotSearch
                                                         }).ToList();
                     //On affecte la priorite a chaque page
                     resultList = resultList.AsEnumerable().Select(p => new dotSearchResult()
@@ -66,6 +67,7 @@ public partial class searchResults : System.Web.UI.Page
                         pageUrl = p.pageUrl,
                         pageDescription = p.pageDescription,
                         pageID = p.pageID,
+                        engine = p.engine,
                         dotPriority = priorite++
                     }).ToList();
 
@@ -92,6 +94,7 @@ public partial class searchResults : System.Web.UI.Page
                                                         pageUrl = p.pageUrl,
                                                         pageDescription = p.pageDescription,
                                                         pageID = p.pageID,
+                                                        engine = p.engine,
                                                         dotPriority = priorite++
                                                     }).ToList();
 
@@ -139,6 +142,8 @@ public partial class searchResults : System.Web.UI.Page
                     dtt.Columns.Add("Title");
                     dtt.Columns.Add("URL");
                     dtt.Columns.Add("Description");
+                    dtt.Columns.Add("URLcourte");
+                    dtt.Columns.Add("Engine");
 
                     if (googleCheck)
                         finalResult.AddRange(dotHelper.GoogleSearch(userQuery));
@@ -154,11 +159,39 @@ public partial class searchResults : System.Web.UI.Page
 
                     foreach (dotSearchResult item in finalResult)
                     {
-                        string url = item.pageUrl;
-                        string title = item.pageTitle;
-                        string description = item.pageDescription;
+                        string url = string.Empty;
+                        if(!string.IsNullOrWhiteSpace(item.pageUrl))
+                            url = item.pageUrl;
+                        string shorturl = string.Empty;
+                        if(!string.IsNullOrWhiteSpace(item.pageUrl))
+                            shorturl = url.Length > 65 ? url.Substring(0, 65) + " ..." : url;
+                        string title = string.Empty;
+                        if (!string.IsNullOrWhiteSpace(item.pageTitle))
+                        {
+                            title = item.pageTitle.Length > 70 ? item.pageTitle.Substring(0, 70) + " ..." : item.pageTitle;
+                            foreach (string keyword in queryList)
+                            {
+                                title = dotHelper.makeBold(title, keyword);
+                            }
+                        }
 
-                        string[] infoArray = { title, url, description };
+                        string description = string.Empty;
+                        if (!string.IsNullOrWhiteSpace(item.pageDescription))
+                        {
+                            description = item.pageDescription.Length > 430 ? item.pageDescription.Substring(0, 430) + " ..." : item.pageDescription;
+                            foreach (string keyword in queryList)
+                            {
+                                description = dotHelper.makeBold(description, keyword);
+                            }
+                        }
+
+                        string engine = string.Empty;
+                        if (googleCheck && bingCheck)
+                            engine = "Boogle";
+                        else
+                            engine = item.engine.ToString();
+
+                        string[] infoArray = { title, url, description, shorturl, engine };
 
                         dtt.LoadDataRow(infoArray, LoadOption.OverwriteChanges);
                     }
